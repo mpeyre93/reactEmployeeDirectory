@@ -1,6 +1,8 @@
 import React from "react";
 import './App.css';
-import Employee from './pages/Employee';
+import Employee from "./pages/Employee";
+import EmployeeHeader from './pages/EmployeeHeader';
+
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
       <header className="App-header">
         Employee Directory
       </header>
+      <EmployeeHeader/>
       <Employee/>
     </div>
   );

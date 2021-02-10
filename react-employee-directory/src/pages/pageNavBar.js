@@ -1,6 +1,6 @@
 import React from "react";
 import "./headerstyle.css";
-import EmployeeHeader from './EmployeeHeader';
+import EmployeeResults from './EmployeeResults';
 
 class pageNavBar extends React.Component {
 
@@ -49,7 +49,7 @@ class pageNavBar extends React.Component {
                     />
                 </form>
                 {this.state.filteredEmployees.length > 0 &&
-                    <EmployeeHeader empList={this.state.filteredEmployees} />
+                    <EmployeeResults empList={this.state.filteredEmployees} />
                 }
             </div>
 
