@@ -1,18 +1,34 @@
 import React from "react";
-import "./info.css";
+import Moment from 'react-moment';
+import "./employeeStyle.css";
 
 function EmployeeInfo(props) {
-    return (
+      return (
+        <table className="tableEmployee ">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th onClick={props.sortByName}>Name</th>
+                    <th>Phone</th>
+                    <th>E-mail</th>
+                    <th>DOB</th>
+                </tr>
+            </thead>
 
-        <div className="card">
-            <div><img alt={props.last} src={props.image}></img></div>
-            <div>{props.title} {props.first} {props.last} </div>
-            <div>{props.gender}</div>
-            <div>{props.age}</div>
-            <div>{props.phone}</div>
-            <div>{props.email}</div>
-        </div>
-    );
+            <tbody className= "">
+                {props.results.map(result => (
+                    <tr className="table" key={result.login.uuid}>
+                        <td> <img className="
+                        "src={result.picture.medium} alt="" /></td>
+                        <td>{result.name.first + " " + result.name.last}  </td>
+                        <td>{result.cell}</td>
+                        <td className="email"><a href={result.email}>{result.email}</a></td>
+                        <td><Moment format="MM/DD/YYYY">{result.dob.date}</Moment></td>
+                    </tr>
+                ))}
+            </tbody>
+        </table >
+    )
 }
 
-export default EmployeeInfo;
+export default EmployeeInfo
