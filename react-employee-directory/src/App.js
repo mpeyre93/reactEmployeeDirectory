@@ -1,18 +1,11 @@
-import React from "react";
-import './App.css';
-import Employee from "./pages/Employee";
-import EmployeeHeader from './pages/EmployeeHeader';
-
+import React from 'react';
+import EmployeeResults from './pages/EmployeeResults';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Employee Directory
-      </header>
-      <EmployeeHeader/>
-      <Employee/>
-    </div>
+  
+    <EmployeeResults />
+
   );
 }
 
