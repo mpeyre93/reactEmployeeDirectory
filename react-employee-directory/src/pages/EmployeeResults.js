@@ -6,10 +6,10 @@ import "./employeeStyle.css";
 
 class EmployeeResults extends Component {
 
-    // Setting the component's initial state
-    //search starts as an empty string
-    //employess and filteredEmployess are empty arrays because that it's the structure of the data we'll be working with
-    //order it's to reference the order that the employees are. By defaltu they come randonly and the first click will trigger then to be in asc order
+    //setting initial state
+    //search starts as empty string
+    //employess and filteredEmployess are empty arrays
+    //reference the order for employees. Random by default
     state = {
         search: "",
         employees: [],
@@ -51,28 +51,27 @@ class EmployeeResults extends Component {
         const filteredEmployees = employees.filter(employee => employee.name.first.toLowerCase().indexOf(UserInput.toLowerCase()) > -1
         )
         this.setState({
-            //change the state of filteredEmployes now it holds all the employes that matches users
-            //search and will be passed down in this state
+            //change state of filteredEmployes to hold all employees that match users
+            //search, passed down in this state
 
             filteredEmployees,
         });
     };
 
 
-    //API call triggered when page it's refreshed and  when application it's loaded 
+    //API call triggered when page refreshed and application loaded 
     employeeSearch = () => {
         API.getUsers()
             .then(res => this.setState({
 
-                //change their both states to hold all the data from the API call(all employess) and will be passed down trough props like that
-                //employee will remain the same and filteredEmployes will be changed and passed down during application's life. Employee will always hold all employess.
+                //change state to hold data from API call, passed through props
                 filteredEmployees: res.data.results,
                 employees: res.data.results
             }))
             .catch(err => console.log(err))
     }
 
-    //when button search it's clicked
+    //handle search btn action
     handleSearch = event => {
         event.preventDefault();
         if (!this.state.search) {
@@ -80,7 +79,7 @@ class EmployeeResults extends Component {
         }
         const { employees, search } = this.state;
 
-        //filters the object looking for the value that matches the value entered in the input box by the user  (search.this.state)
+        //filter object, look for the value input by the user
         const filteredEmployees = employees.filter(employee => employee.name.first.toLowerCase().includes(search.toLowerCase()));
 
         this.setState({
